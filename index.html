@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>🕊️ Tarot Primero Tu Paz</title>
+  <style>
+    body {
+      font-family: 'Georgia', serif;
+      background-color: #f7f0ff;
+      color: #333;
+      text-align: center;
+      padding: 30px;
+    }
+
+    h1 {
+      color: #7b1fa2;
+      margin-bottom: 10px;
+    }
+
+    #instrucciones {
+      font-size: 1rem;
+      color: #555;
+      margin: 20px auto;
+      max-width: 600px;
+      line-height: 1.6;
+      background: #fff5ff;
+      padding: 15px;
+      border-radius: 10px;
+      border: 1px solid #e0c6f2;
+    }
+
+    #carta {
+      margin: 30px auto;
+      padding: 30px;
+      width: 80%;
+      max-width: 500px;
+      border: 3px solid #7b1fa2;
+      border-radius: 12px;
+      background: #fff;
+      font-size: 1.3rem;
+      box-shadow: 0 0 15px rgba(123,31,162,0.2);
+      transition: all 0.3s ease;
+    }
+
+    #icono {
+      font-size: 3rem;
+      margin-bottom: 15px;
+    }
+
+    #btn {
+      background-color: #7b1fa2;
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      font-size: 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    #btn:hover {
+      background-color: #9c27b0;
+    }
+
+    footer {
+      margin-top: 40px;
+      font-size: 0.9rem;
+      color: #888;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🕊️ Tarot Primero Tu Paz</h1>
+
+  <div id="instrucciones">
+    Cierra los ojos por un momento...<br>
+    Respira profundo y piensa en eso que te inquieta, te confunde o te duele.<br><br>
+    Invoca la guía del Espíritu Santo y di interiormente:<br><em>“Muéstrame lo que necesito recordar para regresar a la paz.”</em><br><br>
+    Cuando estés listo... haz clic en el botón y recibe tu carta.
+  </div>
+
+  <div id="carta">
+    <div id="icono">✨</div>
+    <div id="mensaje">Da clic en el botón para revelar tu carta milagrosa</div>
+  </div>
+
+  <button id="btn" onclick="mostrarCarta()">Sacar Carta</button>
+
+  <footer>Hecho con paz, humor y milagros por MoZ ✨</footer>
+
+  <script>
+    const cartasConIconos = [
+      { icono: "🔓", texto: "Perdonar no es condonar, es liberarte del pasado." },
+      { icono: "🌈", texto: "Nada real puede ser amenazado. Nada irreal existe." },
+      { icono: "💖", texto: "El amor no se defiende. Se ofrece o no es amor." },
+      { icono: "🪞", texto: "Tu hermano es tu espejo. Lo que ves en él, está en ti." },
+      { icono: "🎩", texto: "No hay grados de dificultad en los milagros." },
+      { icono: "🧘", texto: "No necesitas hacer nada. Solo dejar de resistirte al amor." },
+      { icono: "🕊️", texto: "La paz es el resultado natural del perdón." },
+      { icono: "📜", texto: "Jesús no vino a fundar una religión, vino a enseñarte a perdonar." },
+      { icono: "👑", texto: "Hoy puedes elegir de nuevo. El ego no manda. Tú sí." },
+      { icono: "📝", texto: "Eres el milagro que esperabas. El guión ya está escrito." },
+      { icono: "🗝️", texto: "El juicio te atrapa. El perdón te libera." },
+      { icono: "💌", texto: "Cuando no sepas qué hacer, elige amar. Siempre funciona." },
+      { icono: "🪶", texto: "No puedes cambiar el pasado, pero sí cómo lo ves." },
+      { icono: "🎭", texto: "No eres el papel que interpretas. Eres el actor eterno." },
+      { icono: "🧠", texto: "No se trata de cambiar al mundo, sino tu percepción." },
+      { icono: "☮️", texto: "Tu paz no depende de otros. Depende de tu decisión." },
+      { icono: "💡", texto: "El milagro no es raro. Es lo natural cuando quitas el miedo." },
+      { icono: "🧬", texto: "La enfermedad empieza en la mente separada. Reconecta." },
+      { icono: "🤐", texto: "A veces el silencio es el lenguaje del perdón." },
+      { icono: "🤗", texto: "La expiación no es castigo. Es corrección amorosa." },
+      { icono: "🕯️", texto: "No pelees con la oscuridad. Enciende la luz." },
+      { icono: "⚖️", texto: "Lo que juzgas en otros, lo mantienes en ti." },
+      { icono: "🔄", texto: "El ego dice: 'Esto es imperdonable'. El Espíritu dice: 'Vamos, sí puedes'." },
+      { icono: "♾️", texto: "Todo lo que das con amor, se multiplica." },
+      { icono: "⏰", texto: "No estás mal, solo dormido. Y ya es hora de despertar." },
+      { icono: "🪐", texto: "Nada externo puede limitar lo que eres en verdad." },
+      { icono: "🌌", texto: "Eres parte del todo. No estás solo ni separado." },
+      { icono: "🙌", texto: "No tienes que cargar con nada. Suelta y confía." },
+      { icono: "🔊", texto: "La voz del ego grita. La del Espíritu susurra. Escucha." },
+      { icono: "🌱", texto: "Cada pensamiento de amor siembra un mundo nuevo." },
+      { icono: "🔥", texto: "Puedes quemar todo el pasado con una sola decisión de paz." },
+      { icono: "📦", texto: "Lo que no perdonas, lo guardas como carga innecesaria." },
+      { icono: "💬", texto: "No tienes que explicarte: tu paz es tu argumento." },
+      { icono: "🦋", texto: "Toda transformación empieza con un perdón sincero." },
+      { icono: "🛡️", texto: "El ego se defiende. El amor confía." },
+      { icono: "🎁", texto: "El perdón es un regalo que primero te das a ti." },
+      { icono: "📖", texto: "No viniste a sufrir. Viniste a recordar el Amor." },
+      { icono: "🌤️", texto: "Detrás de cada nube está el sol: tu paz sigue ahí." },
+      { icono: "🧭", texto: "No sabes a dónde vas, pero estás guiado." },
+      { icono: "💎", texto: "Eres valioso tal como eres. No necesitas validación." }
+    ];
+
+    function mostrarCarta() {
+      const aleatoria = Math.floor(Math.random() * cartasConIconos.length);
+      const carta = cartasConIconos[aleatoria];
+      document.getElementById('icono').textContent = carta.icono;
+      document.getElementById('mensaje').textContent = carta.texto;
+    }
+  </script>
+
+</body>
+</html>

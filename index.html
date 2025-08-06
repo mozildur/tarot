@@ -32,34 +32,47 @@
 
     #carta {
       margin: 30px auto;
-      padding: 30px;
-      width: 80%;
-      max-width: 500px;
-      border: 3px solid #7b1fa2;
-      border-radius: 12px;
-      background: #fff;
-      font-size: 1.3rem;
-      box-shadow: 0 0 15px rgba(123,31,162,0.2);
-      transition: all 0.3s ease;
+      padding: 40px 30px;
+      width: 90%;
+      max-width: 400px;
+      background: linear-gradient(145deg, #fffaf4, #fce6ff);
+      border: 5px double #b185db;
+      border-radius: 20px;
+      box-shadow: 0 10px 20px rgba(123, 31, 162, 0.2),
+                  inset 0 0 20px rgba(255, 255, 255, 0.6);
+      font-size: 1.2rem;
+      color: #5a3e78;
+      font-family: 'Georgia', serif;
+      text-align: center;
+      transition: all 0.4s ease;
+      animation: aparecer 0.5s ease;
     }
 
     #icono {
-      font-size: 3rem;
+      font-size: 3.5rem;
       margin-bottom: 15px;
     }
 
+    @keyframes aparecer {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+
     #btn {
-      background-color: #7b1fa2;
+      background: linear-gradient(to right, #7b1fa2, #b983ff);
       color: white;
       border: none;
-      padding: 12px 25px;
-      font-size: 1rem;
-      border-radius: 6px;
+      padding: 12px 30px;
+      font-size: 1.1rem;
+      border-radius: 30px;
       cursor: pointer;
+      box-shadow: 0 4px 8px rgba(123, 31, 162, 0.2);
+      margin-top: 20px;
+      transition: 0.3s;
     }
 
     #btn:hover {
-      background-color: #9c27b0;
+      background: linear-gradient(to right, #9c27b0, #d0a6ff);
     }
 
     footer {

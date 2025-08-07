@@ -3,138 +3,104 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>🕊️ Tarot Primero Tu Paz</title>
-
-  <!-- Google Fonts -->
+  <title>🕊️ Tarot Primero Tu Paz | MoZ</title>
   <link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Quicksand:wght@400;600&display=swap" rel="stylesheet">
-
   <style>
     body {
-      margin: 0;
-      padding: 0;
+      margin: 0; padding: 0;
       font-family: 'Quicksand', sans-serif;
       background: linear-gradient(to bottom, #fef9ff, #f6efff);
-      color: #4b3c5c;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 20px;
+      color: #3a2946;
+      display: flex; flex-direction: column; align-items: center;
+      min-height: 100vh; padding-bottom: 32px;
     }
-
-    h1 {
-      font-family: 'Marcellus', serif;
-      font-size: 2.2rem;
-      color: #6a1b9a;
-      margin-top: 20px;
-      text-align: center;
-    }
-
-    .firma {
-      margin-top: -10px;
-      font-size: 0.95rem;
-      color: #888;
-      text-align: center;
-    }
-
+    h1 { font-family: 'Marcellus', serif; font-size: 2.2rem; color: #6a1b9a; margin: 24px 0 5px 0; }
+    .firma { margin: 0 0 20px; font-size: .98rem; color: #888; text-align: center; }
     #instrucciones {
-      font-size: 1rem;
-      color: #555;
-      margin: 30px auto 0;
-      max-width: 600px;
-      line-height: 1.6;
-      background: #fffafc;
-      padding: 20px;
-      border-radius: 12px;
-      border-left: 4px solid #d1a8ff;
-      box-shadow: 0 2px 10px rgba(120, 80, 160, 0.05);
+      font-size: 1rem; color: #555; margin: 0 auto 20px; max-width: 600px; line-height: 1.6;
+      background: #fffafc; padding: 18px; border-radius: 13px; border-left: 4px solid #ba68c8;
+      box-shadow: 0 2px 12px rgba(120, 80, 160, 0.07);
     }
-
-    #carta {
-      margin: 30px auto;
-      padding: 30px 20px;
-      width: 90%;
-      max-width: 400px;
-      background: #fff;
-      border: 3px solid #d3bfff;
-      border-radius: 16px;
-      box-shadow: 0 10px 25px rgba(106, 27, 154, 0.15);
-      font-size: 1.15rem;
-      color: #4b3c5c;
-      font-family: 'Marcellus', serif;
-      text-align: center;
-      transition: all 0.4s ease;
-      animation: aparecer 0.5s ease;
+    .carta-tarot-container {
+      width: 310px; max-width: 98vw; height: 500px; margin: 0 auto;
+      perspective: 1300px; display: flex; align-items: center; justify-content: center;
     }
-
-    #icono {
-      font-size: 3rem;
-      margin-bottom: 15px;
+    .carta-tarot-flipper {
+      width: 100%; height: 100%;
+      transition: transform 0.6s cubic-bezier(.4,2,.3,1);
+      transform-style: preserve-3d;
+      position: relative;
     }
-
-    @keyframes aparecer {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
+    .carta-tarot-flipped { transform: rotateY(180deg); }
+    .carta-tarot-face {
+      position: absolute; width: 100%; height: 100%;
+      background: #fff; border: 4px solid #d3bfff; border-radius: 22px;
+      box-shadow: 0 8px 32px rgba(106, 27, 154, 0.12);
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      backface-visibility: hidden; padding: 0 16px; overflow: hidden;
     }
-
+    .carta-tarot-back {
+      transform: rotateY(180deg); z-index: 1;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+    }
+    .carta-tarot-front { z-index: 2; }
+    .carta-tarot-icono { font-size: 3.5rem; margin-bottom: 14px; margin-top: 10px; }
+    .carta-tarot-mensaje {
+      font-family: 'Marcellus', serif; font-size: 1.25rem; color: #6a1b9a; text-align: center;
+      margin: 0 0 14px; padding: 0 10px; word-break: break-word; line-height: 1.25;
+      text-shadow: 0 2px 12px #f5ebff29;
+    }
     #btn {
-      background: linear-gradient(to right, #7b1fa2, #ba68c8);
-      color: white;
-      border: none;
-      padding: 14px 32px;
-      font-size: 1rem;
-      font-weight: 600;
-      border-radius: 30px;
-      cursor: pointer;
-      margin-top: 15px;
-      box-shadow: 0 4px 10px rgba(123, 31, 162, 0.25);
-      transition: transform 0.2s, box-shadow 0.2s;
+      background: linear-gradient(to right, #6a1b9a, #ba68c8);
+      color: white; border: none; padding: 16px 34px; font-size: 1.08rem; font-weight: 600;
+      border-radius: 30px; cursor: pointer; margin: 54px 0 12px;
+      box-shadow: 0 4px 11px rgba(123, 31, 162, 0.18); outline: none;
+      width: 100%; max-width: 320px; letter-spacing: .04em;
     }
-
-    #btn:hover {
-      transform: scale(1.05);
-      box-shadow: 0 6px 14px rgba(123, 31, 162, 0.35);
-    }
-
+    .logo-paz-container { display: flex; justify-content: center; margin-bottom: 12px; }
+    .logo-paz-container img { width: 100px; max-width: 30vw; border-radius: 16px; background: #fff; box-shadow: 0 4px 20px #ae94e420; border: 2px solid #eee; }
     @media screen and (max-width: 600px) {
-      h1 {
-        font-size: 1.7rem;
-      }
-      #instrucciones {
-        font-size: 0.95rem;
-        padding: 15px;
-      }
-      #carta {
-        font-size: 1.05rem;
-      }
-      #btn {
-        width: 100%;
-        max-width: 300px;
-      }
+      h1 { font-size: 1.3rem; }
+      #instrucciones { font-size: .98rem; padding: 12px; }
+      .carta-tarot-container { height: 66vw; max-height: 62vh; min-height: 320px; }
+      .carta-tarot-mensaje { font-size: 1.05rem; padding: 0 4px; }
+      #btn { font-size: .98rem; padding: 12px 0; max-width: 99vw; }
+      .logo-paz-container img { width: 80px; }
     }
   </style>
 </head>
 <body>
-
   <h1>🕊️ Tarot Primero Tu Paz</h1>
   <p class="firma">Hecho con paz, humor y milagros por MoZ ✨</p>
-
-  <div id="carta">
-    <div id="icono">✨</div>
-    <div id="mensaje">Da clic en el botón para revelar tu carta milagrosa</div>
-  </div>
-
-  <button id="btn" onclick="mostrarCarta()">Sacar Carta</button>
-
   <div id="instrucciones">
     Cierra los ojos por un momento...<br>
     Respira profundo y piensa en eso que te inquieta, te confunde o te duele.<br><br>
     Invoca la guía del Espíritu Santo y di interiormente:<br>
     <em>“Muéstrame lo que necesito recordar para regresar a la paz.”</em><br><br>
-    Cuando estés listo... haz clic en el botón y recibe tu carta.
+    Cuando estés listo... haz clic en el botón y recibe tu carta. Puedes usarlo cuantas veces quieras.
+  </div>
+  <div class="carta-tarot-container">
+    <div class="carta-tarot-flipper" id="tarotFlipper">
+      <!-- reverso: aquí verás tu mensaje -->
+      <div class="carta-tarot-face carta-tarot-back">
+        <div class="carta-tarot-icono" id="cartaIcono">✨</div>
+        <div class="carta-tarot-mensaje" id="cartaMensaje">
+          Da clic en el botón para revelar tu carta milagrosa
+        </div>
+      </div>
+      <!-- frente: solo un ✨ decorativo -->
+      <div class="carta-tarot-face carta-tarot-front">
+        <span>✨</span>
+      </div>
+    </div>
+  </div>
+  <button id="btn" type="button" aria-label="Sacar carta milagrosa">Sacar carta</button>
+  <div class="logo-paz-container">
+    <img src="https://storage.ko-fi.com/cdn/useruploads/post/0db069dc-38ad-4d4a-887c-ab7f2469b6d4_logoprimerotupaz.jpg" alt="Primero Tu Paz logo">
   </div>
 
   <script>
-    const cartasConIconos = [
+     const cartasConIconos = [
       { icono: "🔓", texto: "Perdonar no es condonar, es liberarte del pasado." },
       { icono: "🌈", texto: "Nada real puede ser amenazado. Nada irreal existe." },
       { icono: "💖", texto: "El amor no se defiende. Se ofrece o no es amor." },
@@ -177,13 +143,30 @@
       { icono: "💎", texto: "Eres valioso tal como eres. No necesitas validación." }
     ];
 
-    function mostrarCarta() {
-      const aleatoria = Math.floor(Math.random() * cartasConIconos.length);
-      const carta = cartasConIconos[aleatoria];
-      document.getElementById('icono').textContent = carta.icono;
-      document.getElementById('mensaje').textContent = carta.texto;
-    }
-  </script>
 
+    let ultimaCarta = -1;
+    const tarotFlipper = document.getElementById('tarotFlipper');
+    const cartaIcono   = document.getElementById('cartaIcono');
+    const cartaMensaje = document.getElementById('cartaMensaje');
+    const btn          = document.getElementById('btn');
+
+    // 1) Al cargar, giro la carta para que muestre el reverso (tu mensaje inicial)
+    window.addEventListener('load', () => {
+      tarotFlipper.classList.add('carta-tarot-flipped');
+    });
+
+    // 2) Cada clic: saco aleatorio y actualizo reverso (ya visible)
+    btn.addEventListener('click', () => {
+      let aleatoria;
+      do {
+        aleatoria = Math.floor(Math.random() * cartasConIconos.length);
+      } while (aleatoria === ultimaCarta && cartasConIconos.length > 1);
+      ultimaCarta = aleatoria;
+
+      cartaIcono.textContent   = cartasConIconos[aleatoria].icono;
+      cartaMensaje.textContent = cartasConIconos[aleatoria].texto;
+      btn.textContent = "Sacar otra carta";
+    });
+  </script>
 </body>
 </html>

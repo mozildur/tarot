@@ -157,16 +157,28 @@
 
     // 2) Cada clic: saco aleatorio y actualizo reverso (ya visible)
     btn.addEventListener('click', () => {
-      let aleatoria;
-      do {
-        aleatoria = Math.floor(Math.random() * cartasConIconos.length);
-      } while (aleatoria === ultimaCarta && cartasConIconos.length > 1);
-      ultimaCarta = aleatoria;
+  // 1) Gira la carta
+  tarotFlipper.classList.add('carta-tarot-flipped');
 
-      cartaIcono.textContent   = cartasConIconos[aleatoria].icono;
-      cartaMensaje.textContent = cartasConIconos[aleatoria].texto;
-      btn.textContent = "Sacar otra carta";
-    });
+  // 2) Después de 0.6s, muestra la nueva carta
+  setTimeout(() => {
+    let aleatoria;
+    do {
+      aleatoria = Math.floor(Math.random() * cartasConIconos.length);
+    } while (aleatoria === ultimaCarta && cartasConIconos.length > 1);
+    ultimaCarta = aleatoria;
+    cartaIcono.textContent   = cartasConIconos[aleatoria].icono;
+    cartaMensaje.textContent = cartasConIconos[aleatoria].texto;
+    btn.textContent = "Sacar otra carta";
+  }, 600);
+
+  // 3) Después de 10s, gira de vuelta y resetea
+  setTimeout(() => {
+    tarotFlipper.classList.remove('carta-tarot-flipped');
+    mostrarInicio();
+  }, 10600);
+});
+
   </script>
 </body>
 </html>
